@@ -8,7 +8,9 @@ export default async function Home() {
     < div >
 
       {projects.map((project) => (
-        <div key={project._id}>{project.name}</div>
+        <div key={project._id}>
+          {project.name}
+        </div>
       ))}
 
     </ div>
