@@ -1,18 +1,48 @@
-import { getProjects } from "@/sanity/sanity-utils"
+import { getProjects } from "@/sanity/sanity-utils";
+import Image from "next/image";
 
 export default async function Home() {
-
   const projects = await getProjects();
 
+  const styles = {
+    nameGradient:
+      "bg-gradient-to-r from-orange-400 via-red-500 bg-clip-text text-transparent to-purple-600",
+  };
+
   return (
-    < div >
+    <div className="max-w-5xl mx-auto py-20">
+      <h1 className="text-7xl font-extrabold ">
+        Hello I&apos;m{" "}
+        <span className={styles.nameGradient}>Shenon</span>!
+      </h1>
 
-      {projects.map((project) => (
-        <div key={project._id}>
-          {project.name}
-        </div>
-      ))}
+      <p className="mt-3 text-xl text-gray-600">
+        Aloha everyone! Check out my projects...
+      </p>
 
-    </ div>
-  )
+      <h2 className="mt-24 text-3xl font-bold text-gray-700">My projects</h2>
+
+      <div className="mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        {projects.map((project) => (
+          <div key={project._id} className="border border-gray-500 rounded-lg p-3">
+
+            {project.image && (
+              <Image
+                src={project.image}
+                alt={project.name}
+                width={250}
+                height={100}
+                className="object-cover rounded-lg border border-gray-500"
+
+              />
+            )}
+
+            <div className="font-extrabold bg-gradient-to-r from-orange-400 via-red-500 bg-clip-text text-transparent to-purple-600 ">{project.name}</div>
+          </div>
+        ))
+        }
+      </div>
+    </div >
+  );
 }
