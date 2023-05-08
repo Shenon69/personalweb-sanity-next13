@@ -14,7 +14,7 @@ export default async function Project({ params }: props) {
     return (
         <div>
             <header className="flex items-center justify-between">
-                <h1 className="bg-gradient-to-r from-orange-400 via-red-500 bg-clip-text text-transparent to-purple-600 text-5xl drop-shadow font-extrabold">{project.name}</h1>
+                <h1 className="bg-gradient-to-r from-orange-400 via-red-500 bg-clip-text text-transparent to-purple-600 text-xl md:text-3xl lg:text-5xl drop-shadow font-extrabold">{project.name}</h1>
                 <a href={project.url}
                     title="View Project"
                     target="_blank"
@@ -26,7 +26,7 @@ export default async function Project({ params }: props) {
             </header>
 
             {/* Content goes here */}
-            <div className="text-lg text-gray-700 mt-5">
+            <div className="text-md lg:text-lg text-gray-700 mt-5">
                 <PortableText value={project.content} />
             </div>
 
